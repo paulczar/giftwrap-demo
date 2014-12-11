@@ -1,0 +1,83 @@
+---
+settings:
+  package_name_format: 'openstack-{{ project.name }}-{{ version }}'
+  version: '1.0'
+  base_path: '/opt/ursula/openstack-{{version}}/'
+  build_type: package
+  force_overwrite: true
+  gerrit_dependencies: false
+
+projects:
+  - name: keystone
+    gitref: stable/icehouse
+    pip_dependencies:
+      - MySQL-python
+    system_dependencies:
+      - openssl
+      - libldap2-dev
+      - libsasl2-dev
+      - libkrb5-dev
+  - name: glance
+    gitref: stable/icehouse
+    pip_dependencies:
+      - MySQL-python
+    system_dependencies:
+      - libxml2-dev
+  - name: nova
+    gitref: stable/icehouse
+    pip_dependencies:
+      - MySQL-python
+    system_dependencies:
+      - dnsmasq-base
+      - dnsmasq-utils
+      - conntrack
+      - kpartx
+      - parted
+      - iputils-arping
+      - gawk
+      - iptables
+      - ebtables
+      - sudo
+      - qemu-kvm
+      - qemu
+      - libvirt-bin
+      - pm-utils
+      - libjs-jquery-tablesorter
+      - vlan
+      - curl
+      - genisoimage
+      - socat
+      - libmysqlclient-dev
+      - python-libvirt
+  - name: cinder
+    gitref: stable/icehouse
+    pip_dependencies:
+      - MySQL-python
+    system_dependencies:
+      - tgt
+      - lvm2
+      - qemu-utils
+      - libpq-dev
+      - open-iscsi
+      - open-iscsi-utils
+  - name: neutron
+    gitref: stable/icehouse
+    pip_dependencies:
+      - MySQL-python
+    system_dependencies:
+      - ebtables
+      - iptables
+      - iputils-ping
+      - iputils-arping
+      - sudo
+      - dnsmasq-base
+      - dnsmasq-utils
+      - vlan
+      - radvd
+      - openvswitch-switch
+  - name: horizon
+    gitref: stable/icehouse
+    system_dependencies:
+      - apache2
+      - libapache2-mod-wsgi
+

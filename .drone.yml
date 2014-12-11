@@ -1,0 +1,20 @@
+image: bluebox/giftwrap
+#notify:
+#  slack:
+#    webhook_url: $$slack_url
+#    on_started: true
+#    on_success: true
+#    on_failure: true
+script:
+  - giftwrap build -m manifest.yml -t package
+  - ls -alh
+
+#publish:
+#  swift:
+#    username: $$os_username
+#    password: $$os_password
+#    auth_url: $$os_auth_url
+#    container: packages
+#    source:
+#    target: giftwrap-demo/
+  
