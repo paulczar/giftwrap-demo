@@ -6,6 +6,7 @@ image: bluebox/giftwrap
 #    on_success: true
 #    on_failure: true
 script:
+  - pip install virtualenv
   - giftwrap build -m manifest.yml -t package
   - ls -alh
 
