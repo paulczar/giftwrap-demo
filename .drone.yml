@@ -7,15 +7,16 @@ image: bluebox/giftwrap
 #    on_failure: true
 script:
   - pip install virtualenv
-  - giftwrap build -m manifest.yml -t package
+  - mkdir -p pkg && cd pkg
+  - giftwrap build -m ../manifest.yml
   - ls -alh
-
-#publish:
-#  swift:
-#    username: $$os_username
-#    password: $$os_password
-#    auth_url: $$os_auth_url
-#    container: packages
-#    source:
-#    target: giftwrap-demo/
-  
+  - cd ..
+publish:
+  swift:
+    username: $$os_username
+    password: $$os_password
+    auth_url: $$os_auth_url
+    container: packages
+    source: pkg/
+    target: giftwrap-demo/
+    region: RegionOne
